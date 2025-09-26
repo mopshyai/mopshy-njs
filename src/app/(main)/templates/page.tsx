@@ -29,8 +29,8 @@ export default function TemplatesSection() {
   ];
 
   return (
-    <section id="templates" className="relative py-12 sm:py-16 lg:py-24 bg-white overflow-hidden">
-      {/* Background pattern */}
+    <section id="templates" className="relative pt-20 sm:pt-24 lg:pt-28 py-12 sm:py-16 lg:py-24 bg-white overflow-hidden">
+  {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

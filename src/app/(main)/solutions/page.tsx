@@ -84,7 +84,8 @@ export default function SolutionsSection() {
   ];
 
   return (
-    <section id="solutions" className="relative overflow-hidden">
+<section id="solutions" className="relative overflow-hidden pt-16">
+
       {/* Dark Header */}
       <div className="bg-[#1a1f3a] py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

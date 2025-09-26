@@ -56,7 +56,7 @@ export default function CaseStudiesSection() {
   ];
 
   return (
-    <section id="case-studies" className="relative py-12 sm:py-16 lg:py-24 bg-slate-50 overflow-hidden">
+    <section id="case-studies" className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-24 bg-slate-50 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
       

@@ -74,8 +74,8 @@ export default function ROICalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a1f3a] text-white">
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
+    <div className="min-h-screen bg-[#1a1f3a] text-white pt-16">
+   <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative z-10 py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">

@@ -22,7 +22,7 @@ export default function Footer() {
     { href: '/team', label: 'Our Team' },
     { href: '/#case-studies', label: 'Success Stories' },
     { href: '/#process', label: 'Our Process' },
-    { href: '/blog', label: 'Blog & Insights' },
+    { href: '/blogs', label: 'Blog & Insights' },
     { href: 'mailto:mopshyai@gmail.com?subject=Career Inquiry', label: 'Careers' },
   ];
 
@@ -77,9 +77,11 @@ export default function Footer() {
             <div className="lg:col-span-5">
               {/* Logo */}
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
-                  <span className="text-white font-black text-2xl font-mono">M</span>
-                </div>
+                <img
+                  src="/logo/logo.png"
+                  alt="Mopshy.ai Logo"
+                  className="w-16 h-16 rounded-2xl shadow-lg shadow-blue-500/30"
+                />
                 <div>
                   <h2 className="text-2xl font-bold">
                     Mopshy<span className="text-blue-400">.ai</span>

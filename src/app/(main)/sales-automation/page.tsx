@@ -103,8 +103,8 @@ export default function SalesAutomationPage() {
       {/* Hero Section */}
       
 {/* Hero Section */}
-<section className="relative bg-[#1a1f3a] text-white py-12 sm:py-16 lg:py-32 overflow-hidden">
-  {/* Background */}
+<section className="relative bg-[#1a1f3a] text-white pt-28 sm:pt-32 lg:pt-40 pb-12 sm:pb-16 lg:pb-32 overflow-hidden">
+{/* Background */}
   <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
   
   <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -116,7 +116,8 @@ export default function PrivacyPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-[#1a1f3a] text-white py-16 sm:py-20 lg:py-32">
+      <section className="bg-[#1a1f3a] text-white pt-32 sm:pt-40 lg:pt-48 pb-16 sm:pb-20 lg:pb-32">
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">

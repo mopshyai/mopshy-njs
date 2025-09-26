@@ -1670,7 +1670,7 @@ const handleSaveMetaData = async () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1f3a] text-white">
+    <div className="min-h-screen bg-[#1a1f3a] text-white pt-16">
       {/* Background Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
@@ -1922,13 +1922,13 @@ const handleSaveMetaData = async () => {
             <ArrowLeft className="w-5 h-5" />
             <span className="font-medium">Back to Blog Info</span>
           </Link>
-          <Link 
-            href="/blog/blog-preview" 
-            className="flex items-center gap-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-2xl hover:from-blue-600 hover:to-purple-700 transition-all font-bold"
+          <a 
+            onClick={() => window.location.href = "/blog/blog-preview"} 
+            className="flex items-center gap-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-2xl hover:from-blue-600 hover:to-purple-700 transition-all font-bold cursor-pointer"
           >
             <Eye className="w-5 h-5" />
             <span>Preview</span>
-          </Link>
+          </a>
         </motion.div>
         
         <motion.div

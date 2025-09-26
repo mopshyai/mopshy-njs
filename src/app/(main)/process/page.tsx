@@ -53,8 +53,11 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section id="process" className="relative overflow-hidden">
-      {/* Dark header section */}
+    <section
+    id="process"
+    className="relative overflow-hidden pt-32 sm:pt-40 lg:pt-48"
+  >
+   {/* Dark header section */}
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">

@@ -100,7 +100,7 @@ export default function DocsPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-[#1a1f3a] text-white py-16 sm:py-20 lg:py-32 overflow-hidden">
+      <section className="relative bg-[#1a1f3a] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-36 lg:pb-32 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px] animate-[gridMove_30s_linear_infinite]" />
 

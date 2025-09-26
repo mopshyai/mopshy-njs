@@ -908,7 +908,7 @@ export default function BlogPage() {
   }
   
   return (
-    <div className="min-h-screen bg-[#1a1f3a] text-white">
+    <div className="min-h-screen bg-[#1a1f3a] text-white pt-16">
       {/* Background Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
       

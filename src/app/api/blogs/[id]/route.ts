@@ -1,74 +1,5 @@
-import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-
-
-// PUT /api/blogs/[id] - Update a blog
-// export async function PUT(request, { params }) {
-//   try {
-//     const data = await request.json();
-    
-//     // Prepare the data structure for Prisma
-//     const updateData = {
-//       title: data.title,
-//       slug: data.slug,
-//       bannerImage: data.bannerImage,
-//       content: data.content,
-//       updatedAt: new Date()
-//     };
-//     console.log('data', data);
-//     // Handle TOC items - delete existing ones and create new ones
-//     if (data.extractedToc && data.extractedToc.length > 0) {
-//       await prisma.tocItem.deleteMany({
-//         where: { blogId: params.id }
-//       });
-      
-//       await prisma.tocItem.createMany({
-//         data: data.extractedToc.map(item => ({
-//           level: item.level,
-//           content: item.content,
-//           slug: item.id,
-//           blogId: params.id
-//         }))
-//       });
-//     }
-    
-//     // Handle refLinks if provided
-//     if (data.refLinks && data.refLinks.length > 0) {
-//       // Delete existing refLinks
-//       await prisma.refLink.deleteMany({
-//         where: { blogId: params.id }
-//       });
-      
-//       // Create new refLinks
-//       await prisma.refLink.createMany({
-//         data: data.refLinks.map(link => ({
-//           title: link.title,
-//           url: link.url,
-//           blogId: params.id
-//         }))
-//       });
-//     }
-    
-//     // Update the blog
-//     const blog = await prisma.blog.update({
-//       where: { id: params.id },
-//       data: updateData,
-//       include: {
-//         refLinks: true,
-//         tocItems: true
-//       }
-//     });
-    
-//     return NextResponse.json(blog);
-//   } catch (error) {
-//     console.error('Failed to update blog:', error);
-//     return NextResponse.json(
-//       { error: 'Failed to update blog' }, 
-//       { status: 500 }
-//     );
-//   }
-// }
-
+// import { NextResponse } from 'next/server';
+// import { prisma } from '@/lib/prisma';
 
 
 // // Helper function to check slug uniqueness during update
@@ -85,26 +16,51 @@ import { prisma } from '@/lib/prisma';
 //   return !existingBlog;
 // }
 
+// // Helper function to generate a slug from a title
+// function generateSlug(title) {
+//   return title
+//     .toLowerCase()
+//     .replace(/[^\w\s-]/g, '') // Remove special characters
+//     .replace(/\s+/g, '-') // Replace spaces with hyphens
+//     .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+//     .trim(); // Remove leading/trailing spaces
+// }
+
 // export async function PUT(request, { params }) {
 //   try {
 //     const data = await request.json();
     
-//     // If slug is provided, validate its uniqueness
-//     if (data.slug) {
-//       const slugIsUnique = await isSlugUnique(data.slug, params.id);
+//     // Apply slug formatting to the provided slug
+//     let slug = data.slug;
+//     if (slug) {
+//       slug = generateSlug(slug);
+//     }
+    
+//     // If we have a slug (either provided or generated), validate its uniqueness
+//     if (slug) {
+//       const slugIsUnique = await isSlugUnique(slug, params.id);
       
 //       if (!slugIsUnique) {
-//         return NextResponse.json(
-//           { error: 'This slug already exists. Please try using a different slug, for example by adding a hyphen (-) or underscore (_).' }, 
-//           { status: 400 }
-//         );
+//         // If the slug isn't unique, try to make it unique by adding a timestamp
+//         const timestamp = new Date().getTime().toString().slice(-4);
+//         slug = `${slug}-${timestamp}`;
+        
+//         // Double-check that our modified slug is unique
+//         const modifiedSlugIsUnique = await isSlugUnique(slug, params.id);
+        
+//         if (!modifiedSlugIsUnique) {
+//           return NextResponse.json(
+//             { error: 'This slug already exists. Please try using a different slug, for example by adding a hyphen (-) or underscore (_).' }, 
+//             { status: 400 }
+//           );
+//         }
 //       }
 //     }
     
 //     // Prepare the data structure for Prisma
 //     const updateData = {
 //       title: data.title,
-//       slug: data.slug,
+//       slug: slug, // Use our generated or validated slug
 //       bannerImage: data.bannerImage,
 //       content: data.content,
 //       updatedAt: new Date()
@@ -164,6 +120,56 @@ import { prisma } from '@/lib/prisma';
 //     );
 //   }
 // }
+// // DELETE /api/blogs/[id] - Delete a blog
+// export async function DELETE(request, { params }) {
+//   try {
+//     await prisma.blog.delete({
+//       where: { id: params.id }
+//     });
+    
+//     return NextResponse.json({ message: 'Blog deleted successfully' });
+//   } catch (error) {
+//     console.error('Failed to delete blog:', error);
+//     return NextResponse.json(
+//       { error: 'Failed to delete blog' }, 
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
+// // GET /api/blogs/[id] - Get a specific blog
+// export async function GET(request, { params }) {
+//     try {
+//       const blog = await prisma.blog.findUnique({
+//         where: { id: params.id },
+//         include: {
+//           refLinks: true,
+//           tocItems: true
+//         }
+//       });
+      
+//       if (!blog) {
+//         return NextResponse.json(
+//           { error: 'Blog not found' }, 
+//           { status: 404 }
+//         );
+//       }
+//       console.log(blog)
+//       return NextResponse.json(blog);
+//     } catch (error) {
+//       console.error('Failed to fetch blog:', error);
+//       return NextResponse.json(
+//         { error: 'Failed to fetch blog' }, 
+//         { status: 500 }
+//       );
+//     }
+//   }
+
+import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
+
+
 // Helper function to check slug uniqueness during update
 async function isSlugUnique(slug, blogId) {
   // Check if slug exists for any blog EXCEPT the current one being updated
@@ -190,6 +196,7 @@ function generateSlug(title) {
 
 export async function PUT(request, { params }) {
   try {
+    const resolvedParams = await params; // Await params first
     const data = await request.json();
     
     // Apply slug formatting to the provided slug
@@ -200,7 +207,7 @@ export async function PUT(request, { params }) {
     
     // If we have a slug (either provided or generated), validate its uniqueness
     if (slug) {
-      const slugIsUnique = await isSlugUnique(slug, params.id);
+      const slugIsUnique = await isSlugUnique(slug, resolvedParams.id);
       
       if (!slugIsUnique) {
         // If the slug isn't unique, try to make it unique by adding a timestamp
@@ -208,7 +215,7 @@ export async function PUT(request, { params }) {
         slug = `${slug}-${timestamp}`;
         
         // Double-check that our modified slug is unique
-        const modifiedSlugIsUnique = await isSlugUnique(slug, params.id);
+        const modifiedSlugIsUnique = await isSlugUnique(slug, resolvedParams.id);
         
         if (!modifiedSlugIsUnique) {
           return NextResponse.json(
@@ -233,7 +240,7 @@ export async function PUT(request, { params }) {
     // Handle TOC items - delete existing ones and create new ones
     if (data.extractedToc && data.extractedToc.length > 0) {
       await prisma.tocItem.deleteMany({
-        where: { blogId: params.id }
+        where: { blogId: resolvedParams.id }
       });
       
       await prisma.tocItem.createMany({
@@ -241,7 +248,7 @@ export async function PUT(request, { params }) {
           level: item.level,
           content: item.content,
           slug: item.id,
-          blogId: params.id
+          blogId: resolvedParams.id
         }))
       });
     }
@@ -250,7 +257,7 @@ export async function PUT(request, { params }) {
     if (data.refLinks && data.refLinks.length > 0) {
       // Delete existing refLinks
       await prisma.refLink.deleteMany({
-        where: { blogId: params.id }
+        where: { blogId: resolvedParams.id }
       });
       
       // Create new refLinks
@@ -258,14 +265,14 @@ export async function PUT(request, { params }) {
         data: data.refLinks.map(link => ({
           title: link.title,
           url: link.url,
-          blogId: params.id
+          blogId: resolvedParams.id
         }))
       });
     }
     
     // Update the blog
     const blog = await prisma.blog.update({
-      where: { id: params.id },
+      where: { id: resolvedParams.id },
       data: updateData,
       include: {
         refLinks: true,
@@ -282,11 +289,14 @@ export async function PUT(request, { params }) {
     );
   }
 }
+
 // DELETE /api/blogs/[id] - Delete a blog
 export async function DELETE(request, { params }) {
   try {
+    const resolvedParams = await params; // Await params first
+    
     await prisma.blog.delete({
-      where: { id: params.id }
+      where: { id: resolvedParams.id }
     });
     
     return NextResponse.json({ message: 'Blog deleted successfully' });
@@ -299,31 +309,32 @@ export async function DELETE(request, { params }) {
   }
 }
 
-
 // GET /api/blogs/[id] - Get a specific blog
 export async function GET(request, { params }) {
-    try {
-      const blog = await prisma.blog.findUnique({
-        where: { id: params.id },
-        include: {
-          refLinks: true,
-          tocItems: true
-        }
-      });
-      
-      if (!blog) {
-        return NextResponse.json(
-          { error: 'Blog not found' }, 
-          { status: 404 }
-        );
+  try {
+    const resolvedParams = await params; // Await params first
+    
+    const blog = await prisma.blog.findUnique({
+      where: { id: resolvedParams.id },
+      include: {
+        refLinks: true,
+        tocItems: true
       }
-      console.log(blog)
-      return NextResponse.json(blog);
-    } catch (error) {
-      console.error('Failed to fetch blog:', error);
+    });
+    
+    if (!blog) {
       return NextResponse.json(
-        { error: 'Failed to fetch blog' }, 
-        { status: 500 }
+        { error: 'Blog not found' }, 
+        { status: 404 }
       );
     }
+    console.log(blog)
+    return NextResponse.json(blog);
+  } catch (error) {
+    console.error('Failed to fetch blog:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch blog' }, 
+      { status: 500 }
+    );
   }
+}

@@ -5,7 +5,7 @@ import { ArrowUpRight, Calendar } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center bg-[#1a1f3a] text-white overflow-hidden py-16 sm:py-20 lg:py-16">
+    <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center bg-[#1a1f3a] text-white overflow-hidden pt-20 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-16">
       {/* Background */}
       <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px] opacity-50 sm:opacity-100" />
 
