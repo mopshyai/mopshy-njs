@@ -3,6 +3,7 @@ import FreeTrialSection from '@/components/sections/FreeTrialSection';
 import ProblemSolutionSection from '@/components/sections/ProblemSolutionSection';
 import FAQSection from '@/components/sections/FAQSection';
 import ContactSection from '@/components/sections/ContactSection';
+import NewsletterSection from '@/components/sections/Newsletter';
 export default function HomePage() {
   return (
     <main>
@@ -11,6 +12,7 @@ export default function HomePage() {
      <ProblemSolutionSection/>
      <FAQSection />
      <ContactSection />
+     <NewsletterSection />
     </main>
   );
 }

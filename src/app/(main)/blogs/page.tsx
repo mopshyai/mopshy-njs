@@ -269,6 +269,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import NewsletterSection from '@/components/sections/Newsletter';
 
 export default function BlogPage() {
   const [email, setEmail] = useState('');
@@ -591,7 +592,7 @@ Please add this email to the Mopshy AI automation insights newsletter.
           )}
 
           {/* Newsletter Section */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-white/20 text-center">
+          {/* <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-white/20 text-center">
             <div className="text-5xl mb-6">📧</div>
             <h3 className="text-2xl font-bold mb-4">Stay Updated with AI Automation Insights</h3>
             <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
@@ -615,7 +616,8 @@ Please add this email to the Mopshy AI automation insights newsletter.
               </button>
             </div>
             <div className="text-sm text-slate-400">✅ Weekly insights • No spam • Unsubscribe anytime</div>
-          </div>
+          </div> */}
+          <NewsletterSection />
         </div>
       </section>
 

@@ -518,6 +518,8 @@ export default function ContactSection() {
             </Link>
           </div>
         </div>
+
+        
       </div>
       <style jsx>{`
         @keyframes gridMove {
@@ -526,5 +528,6 @@ export default function ContactSection() {
         }
       `}</style>
     </section>
+
   );
 }
